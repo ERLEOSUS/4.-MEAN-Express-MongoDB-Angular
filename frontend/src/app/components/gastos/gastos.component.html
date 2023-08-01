@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #gastoForm="ngForm" (ngSubmit)="addGasto(gastoForm)">
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input type="text" name="tipo" #name="ngModel" [(ngModel)]="gastoService.selectedGasto.tipo" placeholder="Ingrese el tipo de gasto">
+                            </div>
+                            <div class="input-field col s12">
+                            <input type="text" name="ruc" #name="ngModel" [(ngModel)]="gastoService.selectedGasto.ruc" placeholder="Ingrese el ruc de empresa">
+                            </div>
+                            <div class="input-field col s12">
+                            <input type="text" name="empresa" #name="ngModel" [(ngModel)]="gastoService.selectedGasto.empresa" placeholder="Ingrese el nombre de empresa">
+                            </div>
+                            <div class="input-field col s12">
+                            <input type="text" name="monto" #name="ngModel"[(ngModel)]="gastoService.selectedGasto.monto" placeholder="Ingrese el monto del gasto">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="card-action">
+                        <div class="input-field col s12">
+                        <button class="btn right" (click)="addGasto(gastoForm)">Grabar</button>
+                        <button class="btn right" (click)="resetForm(gastoForm)">Borrar</button>                       
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col s7">
+    <table>
+    <thead>
+    <th>Tipo</th>
+    <th>Empresa</th>
+    <th>RUC</th>
+    <th>Monto</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let gasto of gastoService.gastos">
+    <td>{{gasto.tipo}}</td>
+    <td>{{gasto.empresa}}</td>
+    <td>{{gasto.ruc}}</td>
+    <td>{{gasto.monto}}</td>
+    <!--(click)="editGasto(gasto)"-->
+    <td><a>
+        <i class="material-icons">edit</i>
+       </a>
+    </td>
+    <!--(click)="deleteGasto(gasto._id)"-->
+    <td><a>
+        <i class="material-icons">delete</i>
+    </a></td>
+    </tr>
+    </tbody>
+    </table>
+</div>
